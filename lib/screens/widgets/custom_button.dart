@@ -15,6 +15,7 @@ class MyButton extends Padding {
               elevation: 5.0,
               color: darkBlue,
               child: MaterialButton(
+                onLongPress: onPressed,
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 height: 42.0,
                 onPressed: onPressed,

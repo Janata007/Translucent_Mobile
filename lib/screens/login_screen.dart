@@ -152,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
     //send request to service
     userToken = await httpService.authenticateUser(
         _username.toString(), _password.toString());
-
+    print("USER TOKEN: " + userToken);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var username = prefs.getString('username');
     var pass = prefs.getString('password');

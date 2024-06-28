@@ -7,6 +7,7 @@ import 'package:translucent_mobile/utils/user.dart';
 
 class HttpService {
   final String baseURL = "http://10.0.2.2:9002/";
+  // final String baseURL = "http://192.168.0.7:9002/";
 
 //parameters required: username, password
   Future<String> authenticateUser(String username, String password) async {
@@ -21,9 +22,11 @@ class HttpService {
       body: jsonEncode(
           <String, String>{'username': username, 'password': password}),
     );
+    try{
     Map decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
-    userToken = decodedResponse.values.first.toString();
-    return userToken;
+      userToken = decodedResponse.values.first.toString();
+      return userToken;}
+    catch(err){return "";}
   }
 
   Future<void> getUserInfoByUsername(String username) async {
