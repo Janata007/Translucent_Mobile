@@ -62,8 +62,5 @@ class HttpService {
     taskList = decodedResponse
         .map((e) => Task.fromJson(e as Map<String, dynamic>))
         .toList();
-    // var decodedResponse =
-    // jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
-    // print(decodedResponse);
   }
 }

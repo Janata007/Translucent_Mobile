@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:translucent_mobile/screens/calendar_screen.dart';
 import 'package:translucent_mobile/screens/home_screen.dart';
 import 'package:translucent_mobile/screens/profile_screen.dart';
 import 'package:translucent_mobile/screens/tasks_screen.dart';
@@ -69,6 +70,22 @@ Widget myButtons(BuildContext context) {
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          TextButton(
+              onPressed: () async => {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext ctx) => CalendarScreen()))
+              },
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: darkBlue,
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                  padding: EdgeInsets.all(6),
+                  child: Text(
+                    "My Calendar",
+                    style: TextStyle(color: lightBlue, fontSize: 15),
+                  ))),
           TextButton(
               onPressed: () async => {
                 NotificationApi.showNotification(
