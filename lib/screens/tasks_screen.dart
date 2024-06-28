@@ -7,16 +7,16 @@ import 'package:translucent_mobile/screens/widgets/buttons_widget.dart';
 import '../constants.dart';
 import '../utils/requests.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen();
+class TaskScreen extends StatefulWidget {
+  const TaskScreen();
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _TaskScreenState createState() => _TaskScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  String arrangements = "";
-  final TextEditingController _arrangementTextController =
+class _TaskScreenState extends State<TaskScreen> {
+  String tasks = "";
+  final TextEditingController _taskTextController =
   TextEditingController();
   HttpService httpService = HttpService();
 
@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Your Arrangements",
+          "Your Tasks",
           style: TextStyle(color: lightBlue),
         ),
         backgroundColor: darkBlue,
@@ -44,49 +44,47 @@ class _HomeScreenState extends State<HomeScreen> {
               TextButton(
                   onPressed: getData,
                   child: Text(
-                    "Get arrangements",
+                    "Get tasks",
                     style: TextStyle(fontSize: 15, color: Colors.white),
                   )),
               Expanded(
                 child: ListView.builder(
-                  itemCount: arrangementList.length,
+                  itemCount: taskList.length,
                   itemBuilder: (context, int index) {
                     return
                       Scrollbar(child:
-                        SingleChildScrollView(
-                        child:Card(
-                      color: darkBlue,
-                      margin: EdgeInsets.all(20),
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(7.0)),
-                          border: Border.all(color: lightBlue, width: 3),
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              "Name:  " + arrangementList[index].name,
-                              style: TextStyle(fontSize: 20),
+                      SingleChildScrollView(
+                          child:Card(
+                            color: darkBlue,
+                            margin: EdgeInsets.all(20),
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                                border: Border.all(color: lightBlue, width: 3),
+                              ),
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    "Name:  " + taskList[index].name,
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                  Text(
+                                    "Description:  " + taskList[index].description,
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                  Text(
+                                    "Due Date:  " + taskList[index].dateDue.substring(0,10),
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                  Text(
+                                    "Finished:  " + taskList[index].finished.toString(),
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text(
-                              "Code:  " + arrangementList[index].code,
-                              style: TextStyle(fontSize: 20),
-                            ),
-                            Text(
-                              "Start:  " + arrangementList[index].startTime.substring(0,10) + " " +
-                              arrangementList[index].startTime.substring(11,16),
-                              style: TextStyle(fontSize: 20),
-                            ),
-                            Text(
-                              "End:  " + arrangementList[index].endTime.substring(0,10) + " " +
-                              arrangementList[index].endTime.substring(11,16),
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )));
+                          )));
                   },
                   padding: EdgeInsets.all(15),
                 ),
@@ -98,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> getData() async {
-    await httpService.getArrangementsForUser(loggedUsername);
+    await httpService.getTasksForUser(loggedUsername);
     resetState();
   }
 
@@ -115,8 +113,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void setArrangementsInfo() {
     dates.clear();
-    arrangementsJsonData = jsonDecode(arrangements);
-    List<dynamic> days = arrangementsJsonData["arrangements"]["arrangement"];
+    tasksJsonData = jsonDecode(tasks);
+    List<dynamic> days = tasksJsonData["arrangements"]["arrangement"];
     //todo: map dates correctly based on json
     Map<String, dynamic> day1 = days[0];
     Map<String, dynamic> day2 = days[1];

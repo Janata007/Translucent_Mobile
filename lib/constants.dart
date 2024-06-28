@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translucent_mobile/utils/Arrangement.dart';
+import 'package:translucent_mobile/utils/task.dart';
 import 'package:translucent_mobile/utils/user.dart';
 
 const semiBlue = Color.fromRGBO(92, 144, 181, 1);
@@ -17,8 +18,9 @@ String userToken = "";
 String loggedUsername = "";
 String userId = "";
 List<String> dates = [];
-User profileData = User("", "", "", loggedUsername);
+User profileData = User(0,"", "", "", loggedUsername);
 List<Arrangement> arrangementList = [];
+List<Task> taskList = [];
 
 Map<String, dynamic> jsonData = {
   "location": 'info',
@@ -26,6 +28,9 @@ Map<String, dynamic> jsonData = {
 };
 Map<String, dynamic> arrangementsJsonData = {
   "arrangements": "",
+};
+Map<String, dynamic> tasksJsonData = {
+  "tasks": "",
 };
 
 getSharedPreferences() async {
