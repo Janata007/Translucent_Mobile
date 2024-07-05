@@ -20,6 +20,7 @@ String userId = "";
 List<String> dates = [];
 User profileData = User(0,"", "", "", loggedUsername);
 List<Arrangement> arrangementList = [];
+List<DateTime> arrangementTimes = [];
 List<Task> taskList = [];
 
 Map<String, dynamic> jsonData = {

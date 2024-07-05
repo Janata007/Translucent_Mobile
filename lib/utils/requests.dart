@@ -51,7 +51,8 @@ class HttpService {
     arrangementList = decodedResponse
         .map((e) => Arrangement.fromJson(e as Map<String, dynamic>))
         .toList();
-  }
+    arrangementTimes = arrangementList.map((el)=> DateTime.parse(el.startTime)).toList();
+ }
   Future<void> getTasksForUser(String username) async {
     await this.getUserInfoByUsername(username);
     String url = baseURL_work + "work/tasks/" + profileData.id.toString();
