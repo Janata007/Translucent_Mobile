@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:translucent_mobile/screens/calendar_screen.dart';
 import 'package:translucent_mobile/screens/home_screen.dart';
 import 'package:translucent_mobile/screens/profile_screen.dart';
 import 'package:translucent_mobile/screens/tasks_screen.dart';
 import 'package:translucent_mobile/utils/notification_api.dart';
+import '../events_calendar.dart';
 
 import '../../constants.dart';
 import '../login_screen.dart';
@@ -75,7 +75,7 @@ Widget myButtons(BuildContext context) {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext ctx) => CalendarScreen()))
+                        builder: (BuildContext ctx) => TableEventsExample()))
               },
               child: Container(
                   decoration: BoxDecoration(

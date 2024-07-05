@@ -53,6 +53,7 @@ class HttpService {
         .toList();
     arrangementTimes = arrangementList.map((el)=> DateTime.parse(el.startTime)).toList();
  }
+
   Future<void> getTasksForUser(String username) async {
     await this.getUserInfoByUsername(username);
     String url = baseURL_work + "work/tasks/" + profileData.id.toString();

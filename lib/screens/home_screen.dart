@@ -103,14 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void resetState() {
-    setState(() {
-      // jsonData = jsonDecode(arrangements);
-      // locationCity = jsonData['location']['name'];
-      // locationCountry = jsonData['location']['country'];
-      // localTime = jsonData['location']['localtime'];
-      // weather = jsonData['current']['condition']['text'];
-      // arrangementId = jsonData['current']['temp_c'].toString();
-    });
+    setState(() {});
   }
 
   void setArrangementsInfo() {
